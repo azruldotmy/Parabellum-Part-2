@@ -9,9 +9,28 @@ pragma solidity >=0.7.0 <0.9.0;
  */
 contract Insert_data {
 
-    uint256 number;
-    
+    address payable patient;
 
+    uint256 public no_of_patient = 0;
+    uint256 public no_of_doctor = 0;
+
+    struct Data{
+        uint id;
+        string name;
+        uint phoneNo;
+        string location;
+        string problem;
+        uint date;
+        string doc;
+        bool vacant;
+        address payable patient;
+    }
+    
+    mapping(uint => Data) public Data_by_id;
+
+    struct Doctor{
+        
+    }
     /**
      * @dev Store value in variable
      * @param num value to store
