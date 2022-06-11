@@ -23,27 +23,32 @@ contract Insert_data {
         uint date;
         string doc;
         bool vacant;
+        uint payment;
         address payable patient;
     }
     
     mapping(uint => Data) public Data_by_id;
 
-    struct Doctor{
-        
-    }
-    /**
-     * @dev Store value in variable
-     * @param num value to store
-     */
-    function store(uint256 num) public {
-        number = num;
+     modifier notPatient(uint _index) {
+        require(msg.sender == Data_by_id[_index].patient, "Only patient can access this");
+        _;
+     }   
+
+     modifier IsVacant(uint _index) {
+        require(Data_by_id[_index].vacant == true, "Doctor is currently with another patient.");
+        _;
+     }
+
+    modifier enoughTx(uint _index) {
+        require(msg.value >= uint(Data_by_id[_index].payment), "Not enough Ether in your wallet");
+        _;
     }
 
-    /**
-     * @dev Return value 
-     * @return value of 'number'
-     */
-    function retrieve() public view returns (uint256){
-        return number;
+    function addPatient(string memory _name, string memory _location, uint _phoneNo, uint  _payment) public {
+        require(msg.sender != address(0));
+        no_of_patient ++;
+        bool _vacancy = true;
+        Data_by_id[no_of_patient] = Data(no_of_patient,0,_name,_location, _phoneNo,_payment,0,_vacancy, msg.sender, address(0)); 
+        
     }
-}
+  
