@@ -44,11 +44,11 @@ contract Insert_data {
         _;
     }
 
-    function addPatient(string memory _name, string memory _location, uint _phoneNo, uint  _payment) public {
+    function addPatient(string memory _name, string memory _location, uint _phoneNo, string memory _problem, uint  _payment, string memory _doc, address payable _patient) public {
         require(msg.sender != address(0));
         no_of_patient ++;
         bool _vacancy = true;
-        Data_by_id[no_of_patient] = Data(no_of_patient,0,_name,_location, _phoneNo,_payment,0,_vacancy, msg.sender, address(0)); 
+        Data_by_id[no_of_patient] = Data(no_of_patient,_name,_phoneNo,_location, _problem, _payment, _doc, _vacancy, no_of_patient, payable (_patient));
         
     }
-  
+}
