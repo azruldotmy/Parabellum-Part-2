@@ -1,0 +1,77 @@
+{
+	"compiler": {
+		"version": "0.8.6+commit.11564f7e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getData",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts\\Share_data.sol": "Share_data"
+		},
+		"evmVersion": "berlin",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts\\Share_data.sol": {
+			"keccak256": "0xd02adb58656f0fef5ae6a31975efda2eafc95b2d3ded4498407a135594baf057",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://88cb499f4e9405f7241f051ea1bc8f1fdaaa3fdb2f9ecd544de106a95bba832f",
+				"dweb:/ipfs/QmZsScKh5j5xoxheGvGVqLULVcFVV3Gf7iLf44nzSRb3h9"
+			]
+		}
+	},
+	"version": 1
+}
