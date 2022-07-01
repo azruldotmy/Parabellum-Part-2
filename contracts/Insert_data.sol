@@ -24,6 +24,7 @@ contract Insert_data {
         string doc;
         bool vacant;
         uint payment;
+        string date;
         address payable patient;
     }
     
@@ -44,13 +45,13 @@ contract Insert_data {
         _;
     }
 
-    function addPatient(string memory _name, string memory _location, uint _phoneNo, string memory _problem, uint  _payment, string memory _doc, uint age) public {
+    function addPatient(string memory _name, string memory _location, uint _phoneNo, string memory _problem, uint  _payment, string memory _doc, uint age, string memory date) public {
         require(msg.sender != address(0));
         no_of_patient ++;
         no_of_doctor ++;
         bool _vacancy = true;
-        Data_by_id[no_of_patient] = Data(no_of_patient,_name,_phoneNo,_location, _problem, age, _doc, _vacancy, _payment, payable (address(0)));
-        Data_by_id[no_of_doctor] = Data(no_of_patient,_name,_phoneNo,_location, _problem, age, _doc, _vacancy, _payment, payable (address(0)));
+        Data_by_id[no_of_patient] = Data(no_of_patient,_name,_phoneNo,_location, _problem, age, _doc, _vacancy, _payment, date, payable (address(0)));
+        Data_by_id[no_of_doctor] = Data(no_of_patient,_name,_phoneNo,_location, _problem, age, _doc, _vacancy, _payment, date, payable (address(0)));
         
     }
 }

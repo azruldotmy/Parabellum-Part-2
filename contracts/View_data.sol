@@ -7,19 +7,38 @@ import {Insert_data} from "./Insert_data.sol";
  * @title View Data
  * @dev View data that has been added in Insert Data
  */
-contract View_data is Insert_data {
+contract View_data {
     
-      function getData(uint Data_by_id) public view returns(string memory _name, string memory _location, uint _phoneNo, string memory _problem, uint  _payment, string memory _doc, uint age) {
-        require(msg.sender != address(0));
+    struct Data{
+        uint id;
+        string name;
+        uint phoneNo;
+        string location;
+        string problem; 
+        uint age;
+        string doc;
+        bool vacant;
+        uint payment;
+        address payable patient;
+    }
+    
+     mapping(uint => Data) public Data_by_id;
 
-        require(getData(Data_by_id);(patient).hasAccount, "Patient's ID is does not exist.");
-        Data storage w = Data_by_id.exists(address(0));
+     modifier notPatient(uint _index) {
+        require(msg.sender == Data_by_id[_index].patient, "Only patient can access this");
+        _;
+     }   
 
-        return(w.id, w.name, w.phoneNo, w.location, w.problem, w.age, w.doc, w.vacant, w.payment);
+     modifier IsVacant(uint _index) {
+        require(Data_by_id[_index].vacant == true, "Doctor is currently with another patient.");
+        _;
+     }
 
-
-       revert('Patient not found');
-      }
+    modifier enoughTx(uint _index) {
+        require(msg.value >= uint(Data_by_id[_index].payment), "Not enough Ether in your wallet");
+        _;
+    }
+      
   }
   
 
