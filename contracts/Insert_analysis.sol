@@ -12,8 +12,8 @@ contract Insert_analysis {
 
     address payable patient;
 
-    uint256 public no_of_patient = 0;
-    uint256 public no_of_doctor = 0;
+    uint256 public no_of_analysis = 0;
+    uint256 public no_of_examination = 0;
 
     struct analysis{
         uint id;             /* Patient id from another function*/
@@ -28,21 +28,15 @@ contract Insert_analysis {
         address payable patient;
     }
     
-    mapping(uint => analysis) public analysis_by_id;
-
-     modifier notPatient(uint _index) {
-        require(msg.sender == analysis_by_id[_index].patient, "Only patient can access this");
-        _;
-     }   
-
+   mapping(uint => analysis) public analysis_by_id;
 
     function addAnalysis(uint _anlysisid, uint _priority, uint _bpressure, uint _hrate, string memory _typeofdisease, string memory _analysis, string memory _doc, string memory dateanalysis) public {
         require(msg.sender != address(0));
-       // no_of_patient ++;
-        //no_of_doctor ++;
-       // bool _vacancy = true;
-        analysis_by_id[no_of_patient] = analysis(no_of_patient,_anlysisid, _priority,_bpressure, _hrate, _typeofdisease, _analysis,_doc, dateanalysis, payable (address(0)));
-        analysis_by_id[no_of_doctor] = analysis(no_of_patient,_anlysisid, _priority,_bpressure, _hrate, _typeofdisease, _analysis,_doc, dateanalysis, payable (address(0)));
-        
+       
+        no_of_analysis ++;
+        no_of_examination ++;
+        analysis_by_id[no_of_analysis] = analysis(no_of_analysis,_anlysisid, _priority,_bpressure, _hrate, _typeofdisease, _analysis,_doc, dateanalysis, payable (address(0)));
+        analysis_by_id[no_of_examination] = analysis(no_of_examination,_anlysisid, _priority,_bpressure, _hrate, _typeofdisease, _analysis,_doc, dateanalysis, payable (address(0)));
+    
     }
 }
