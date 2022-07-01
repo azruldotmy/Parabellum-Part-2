@@ -51,6 +51,18 @@ contract Insert_data {
         no_of_patient ++;
         no_of_doctor ++;
         bool _vacancy = true;
+        require(age > 18, "Patient is expected to be over 18 years old"); //Check if patient is over 18 years old
+        if(age <= 18){
+            return;
+        }
+        require(keccak256(bytes(_problem)) == keccak256(bytes("Cancer")),"Please refer to another department. Thank you"); //Check if patient is a cancer patient
+        if(keccak256(bytes(_problem)) != keccak256(bytes("Cancer"))){
+            return;
+        }
+        require(_payment <= 10, " Threshold value must be equal or below 10 Ether. "); //Check if payment is exceeding 10 ether
+        if(_payment > 10){
+            return;
+        }
         Data_by_id[no_of_patient] = Data(no_of_patient,_name,_phoneNo,_location, _problem, age, _doc, _vacancy, _payment, date, payable (address(0)));
         Data_by_id[no_of_doctor] = Data(no_of_patient,_name,_phoneNo,_location, _problem, age, _doc, _vacancy, _payment, date, payable (address(0)));
         
