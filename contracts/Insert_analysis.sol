@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity "0.8.6";
 import {Insert_data} from "./Insert_data.sol";
 
 /**
@@ -30,20 +30,11 @@ contract Insert_analysis {
     
     mapping(uint => analysis) public analysis_by_id;
 
-     /*modifier notPatient(uint _index) {
+     modifier notPatient(uint _index) {
         require(msg.sender == analysis_by_id[_index].patient, "Only patient can access this");
         _;
-     }   */
+     }   
 
-    /*modifier IsVacant(uint _index) {
-        require(analysis_by_id[_index].vacant == true, "Doctor is currently with another patient.");
-        _;
-     }*/
-
-    /*modifier enoughTx(uint _index) {
-        require(msg.value >= uint(analysis_by_id[_index].payment), "Not enough Ether in your wallet");
-        _;
-    }*/
 
     function addAnalysis(uint _anlysisid, uint _priority, uint _bpressure, uint _hrate, string memory _typeofdisease, string memory _analysis, string memory _doc, string memory dateanalysis) public {
         require(msg.sender != address(0));
